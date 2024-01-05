@@ -197,6 +197,18 @@
       }, true);
     }
 
+    const queryString = window.location.search; // Contains "?id=<The Given ID>"
+    const params = new URLSearchParams(queryString); // Converts the query string to javascript object
+    const id = params.get("id"); // Contains the ID given
+
+    let portfoliodetails = select('.detail-view', true);
+    if (portfoliodetails) {
+      //console.log('check: ', portfoliodetails);
+      portfoliodetails.forEach(detail => {
+        //console.log('check 2: ', detail.id);
+        if (detail.id !== id ) detail.style.display="none";
+      })
+    }
   });
 
   /**
